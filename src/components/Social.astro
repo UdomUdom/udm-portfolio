@@ -1,0 +1,19 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<div
+  class="mr-3 h-10 w-24 rounded-xl p-[2px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.4)] transition-all duration-300 hover:bg-orange-100/15"
+>
+  <a
+    href={href}
+    target="_blank"
+    class="flex h-full w-full items-center justify-center rounded-lg bg-stone-100 px-4 py-2 text-sm font-medium text-gray-900 opacity-90 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100 active:scale-95 dark:bg-stone-800 dark:text-white"
+  >
+    <slot />
+  </a>
+</div>
