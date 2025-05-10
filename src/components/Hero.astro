@@ -3,58 +3,56 @@ import Section from "./Section.astro";
 import Social from "./Social.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-const site = Astro.site;
 ---
 
-<Section class="w-full">
+<Section
+  class="w-full container mx-auto flex flex-col items-center justify-center text-center px-4 py-8 md:py-16 h-dvh"
+>
   <div class="text-start">
     <Image
-      src="https://avatars.githubusercontent.com/u/118774393?v=4"
-      alt="Picture Profile"
+      src="https://avatars.githubusercontent.com/u/118774393?v=4 "
+      alt="Udomsak Sanpasert"
       class="rounded-md object-cover w-40 h-40 md:w-64 md:h-64 mr-4 md:m-0 md:mr-4 float-left"
       width={248}
       height={248}
-      loading="lazy"
+      loading="eager"
     />
 
     <div class="w-full md:w-auto">
       <p class="pb-2 text-3xl sm:text-4xl font-bold">
-        Hi, I'm <span class="text-uma">Udomsak Sanpasert</span>
+        Hi, I'm <span class="text-uma">Udomsak Sanprasert</span>
       </p>
-
+      <p
+        class="text-2xl sm:text-xl font-semibold text-blue-500/60 text-shadow-blue-200"
+      >
+        Full-Stack Developer | Front-End Enthusiast | Games Developer
+      </p>
       <p class="py-2 text-sm sm:text-base">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-        esse non molestias eos excepturi, inventore atque cupiditate. Sed
-        voluptatem quas omnis culpa, et odit.Lorem ipsum dolor sit amet <span
+        I'm a passionate full-stack developer (mostly front-end) focused on
+        building scalable and user-friendly web applications. Proficient in <span
           class="font-black text-sky-700">React</span
-        > adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore
-        atque cupiditate. Sed voluptatem quas omnis culpa, et odit.Lorem ipsum dolor
-        sit amet consectetur <span class="font-black text-green-700"
-          >Node.js</span
-        > elit. Tenetur vero esse non molestias eos <span
+        >, <span class="font-black text-green-700">Node.js</span>, and <span
           class="font-black text-gray-950">Next.js</span
-        >, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-      </p>
-
-      <p class="py-2 text-sm sm:text-base">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero
-        esse non molestias eos excepturi, inventore atque cupiditate. Sed
-        voluptatem quas omnis culpa, et odit.Lorem ipsum dolor sit amet <span
+        >, I strive to write clean, maintainable code that delivers real value.
+        Always seeking to learn and improve, I’m excited by modern tools like <span
           class="font-black text-fuchsia-700">Astro</span
-        > adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore
-        atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+        > to expand my knowledge and build faster, more efficient websites. Ready
+        to contribute to impactful and innovative projects.
       </p>
     </div>
   </div>
 
-  <div class="flex space-x-4 mt-6">
-    <Social href="https://github.com/udomudom ">
+  <div class="flex space-x-4 mt-2">
+    <Social href="https://github.com/udomudom " label="GitHub profile">
       <Icon name="github" class="text-xl" />
     </Social>
-    <Social href="http://linkedin.com/in/udomsak-sanprasert-79653133b">
+    <Social
+      href="http://linkedin.com/in/udomsak-sanprasert-79653133b"
+      label="LinkedIn profile"
+    >
       <Icon name="linkedin" class="text-xl" />
     </Social>
-    <Social href="mailto:udomsak.sap@gmail.com">
+    <Social href="mailto:udomsak.sap@gmail.com" label="Email me">
       <Icon name="email" class="text-xl" />
     </Social>
   </div>

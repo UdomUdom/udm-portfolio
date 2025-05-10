@@ -1,9 +1,10 @@
 ---
 interface Props {
   href: string;
+  label?: string;
 }
 
-const { href } = Astro.props;
+const { href, label } = Astro.props;
 ---
 
 <div
@@ -12,6 +13,8 @@ const { href } = Astro.props;
   <a
     href={href}
     target="_blank"
+    rel="noopener noreferrer"
+    aria-label={label ? label : undefined}
     class="flex h-full w-full items-center justify-center rounded-lg bg-stone-100 px-4 py-2 text-sm font-medium text-gray-900 opacity-90 backdrop-blur-sm transition-all duration-200 ease-in-out hover:opacity-100 active:scale-95 dark:bg-stone-800 dark:text-white"
   >
     <slot />
