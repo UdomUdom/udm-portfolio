@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div
+  class="w-full container mx-auto px-4 py-16 flex items-center justify-center min-h-screen"
+>
+  <section id="skills">
+    <div class="flex flex-col items-center">
+      <h1 class="section-title text-center">Skills</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-5xl">
+        {
+          [
+            {
+              title: "Languages",
+              icons: ["typescript", "javascript", "html", "css", "python"],
+            },
+            {
+              title: "Frameworks & Libraries",
+              icons: ["react", "tailwind", "nextjs", "nodejs", "expressjs"],
+            },
+            {
+              title: "Database",
+              icons: ["postgresql", "mongodb", "mysql"],
+            },
+            {
+              title: "Additional Tools",
+              icons: ["docker", "git", "notion", "vercel"],
+            },
+            {
+              title: "Game Development",
+              icons: ["godot", "gdscript"],
+            },
+            {
+              title: "Design & Graphics",
+              icons: ["photoshop", "premiere", "figma", "aseprite"],
+            },
+          ].map(({ title, icons }) => (
+            <div class="flex flex-col items-center">
+              <h3 class="category-title">{title}</h3>
+              <nav class="flex flex-wrap justify-center gap-6 text-4xl text-gray-700 dark:text-gray-300">
+                {icons.map((icon) => (
+                  <span class="icon-wrapper" title={icon}>
+                    <Icon name={icon} />
+                  </span>
+                ))}
+              </nav>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  #skills {
+    scroll-margin-top: 80px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+
+  .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .icon-wrapper {
+    transition:
+      transform 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .icon-wrapper:hover {
+    transform: translateY(-4px) scale(1.1);
+  }
+</style>

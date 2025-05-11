@@ -5,46 +5,108 @@ import Divider from "./Divider.astro";
 ---
 
 <div
-  class="w-full container mx-auto flex flex-col items-center justify-center text-center px-4 py-8 h-dvh min-h-screen"
+  class="w-full container mx-auto flex flex-col items-center justify-center text-center px-4 min-h-full"
 >
   <div class="text-start">
-    <Image
-      src="https://avatars.githubusercontent.com/u/118774393?v=4 "
-      alt="Udomsak Sanpasert"
-      class="rounded-md object-cover w-40 h-40 md:w-64 md:h-64 mr-4 md:m-0 md:mr-4 float-left"
-      width={248}
-      height={248}
-      loading="eager"
-    />
+    <div
+      class="flex flex-col md:flex-row items-center justify-center mb-10 max-w-fit mx-auto gap-6"
+    >
+      <div class="mt-6 md:mt-0 flex justify-center">
+        <div class="relative group">
+          <Image
+            src="https://avatars.githubusercontent.com/u/118774393?v=4 "
+            alt="Udomsak Sanpasert"
+            class="rounded-lg object-cover w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64"
+            width={248}
+            height={248}
+            loading="eager"
+          />
+        </div>
+      </div>
+      <div class="text-center md:text-left mt-6 md:mt-0">
+        <p class="text-4xl sm:text-5xl font-extrabold mb-3">
+          <span id="hello-text">Hello</span>, I'm <span class="text-uma"
+            >Udomsak S.🛸</span
+          >
+        </p>
+        <p
+          class="text-2xl sm:text-xl mb-4 font-semibold text-blue-500/60 text-shadow-blue-200"
+        >
+          Software Engineer
+        </p>
 
-    <div class="w-full md:w-auto">
-      <p class="pb-2 text-3xl sm:text-4xl font-bold">
-        Hi, I'm <span class="text-uma">Udomsak S.🛸</span>
-      </p>
-      <p
-        class="text-2xl sm:text-xl font-semibold text-blue-500/60 text-shadow-blue-200"
-      >
-        Software Engineer
-      </p>
-      <p class="py-2 text-sm sm:text-base">
-        I'm a passionate full-stack developer (mostly front-end) focused on
-        building scalable and user-friendly web applications. Proficient in <span
-          class="font-black text-sky-700">React</span
-        >, <span class="font-black text-green-700">Node.js</span>, and <span
-          class="font-black text-gray-950">Next.js</span
-        >, I strive to write clean, maintainable code that delivers real value.
-        Always seeking to learn and improve, I’m excited by modern tools like <span
-          class="font-black text-fuchsia-700">Astro</span
-        > to expand my knowledge and build faster, more efficient websites. Ready
-        to contribute to impactful and innovative projects.
-      </p>
+        <div
+          class="flex flex-col gap-3 items-center md:items-start text-gray-400"
+        >
+          <p>📍 Thailand, Bangkok</p>
+          <a
+            href="mailto:udomsak.sap@gmail.com"
+            class="hover:text-white transition-colors duration-200"
+          >
+            ✉️ udomsak.sap@gmail.com
+          </a>
+        </div>
+      </div>
     </div>
-    <Divider class="hidden md:block" />
+    <Divider margin="my-8" />
+
+    <div class="flex mt-2 justify-center w-full">
+      <div class="flex space-x-4 items-center">
+        <SocialLink />
+      </div>
+    </div>
   </div>
 
-  <div class="flex mt-2 justify-center w-full">
-    <div class="flex space-x-4 items-center">
-      <SocialLink />
-    </div>
-  </div>
+  <script>
+    let currentIndex = 0;
+    const hello = [
+      "Hola",
+      "Bonjour",
+      "Salut",
+      "Ciao",
+      "こんにちは",
+      "안녕하세요",
+      "สวัสดี",
+    ];
+
+    function randomIndex() {
+      return ~~(Math.random() * hello.length);
+    }
+
+    function shuffleText(element: HTMLElement, newText: string) {
+      const oldText = element.textContent || "";
+      const maxLength = Math.max(oldText.length, newText.length);
+      let currentText = oldText.split("");
+
+      for (let i = 0; i < maxLength; i++) {
+        setTimeout(() => {
+          if (i < newText.length) {
+            currentText[i] = newText[i];
+          } else {
+            currentText[i] = "";
+          }
+          element.textContent = currentText.join("");
+        }, i * 100);
+      }
+    }
+
+    window.setInterval(function () {
+      let newIndex = randomIndex();
+      while (newIndex === currentIndex) newIndex = randomIndex();
+      currentIndex = newIndex;
+      const helloTextElement = document.getElementById("hello-text");
+      if (helloTextElement) {
+        shuffleText(helloTextElement, hello[currentIndex]);
+      }
+    }, 1500);
+  </script>
+
+  <style>
+    #hello-text {
+      position: relative;
+      display: inline-block;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+  </style>
 </div>

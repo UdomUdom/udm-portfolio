@@ -1,103 +1,156 @@
 ---
 import { Image } from "astro:assets";
-import Divider from "./Divider.astro";
 ---
 
 <div
-  class="w-full container mx-auto flex flex-col items-center justify-center text-center px-4 min-h-full"
+  class="w-full container mx-auto flex flex-col items-center justify-center text-center px-4 py-8 h-dvh min-h-screen"
 >
-  <div
-    class="flex flex-col md:flex-row items-center justify-center mb-10 max-w-fit mx-auto gap-6"
-  >
-    <div class="mt-6 md:mt-0 flex justify-center">
-      <div class="relative group">
-        <Image
-          src="https://avatars.githubusercontent.com/u/118774393?v=4 "
-          alt="Udomsak Sanpasert"
-          class="rounded-lg object-cover w-40 h-40 md:w-56 md:h-56 lg:w-64 lg:h-64"
-          width={248}
-          height={248}
-          loading="eager"
-        />
-      </div>
-    </div>
-    <div class="text-center md:text-left mt-6 md:mt-0">
-      <p class="text-4xl sm:text-5xl font-extrabold mb-3">
-        <span id="hello-text">Hello</span>, I'm <span class="text-uma"
-          >Udomsak S.🛸</span
-        >
-      </p>
-      <p
-        class="text-2xl sm:text-xl font-semibold text-blue-500/60 text-shadow-blue-200"
-      >
-        Software Engineer
-      </p>
-      <Divider class="hidden md:block" />
+  <div class="text-start max-w-4xl w-full">
+    <Image
+      src="https://avatars.githubusercontent.com/u/118774393?v=4 "
+      alt="Udomsak Sanprasert"
+      class="rounded-md object-cover w-40 h-40 md:w-64 md:h-64 mr-4 mb-4 md:mb-0 float-left"
+      width={248}
+      height={248}
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
 
+    <div>
+      <p class="pb-2 text-3xl sm:text-4xl font-bold">
+        Hi, I'm <span class="text-uma">Udomsak Sanprasert✨</span>
+      </p>
       <div
-        class="flex flex-col gap-3 items-center md:items-start text-gray-400"
+        class="dropping-texts text-2xl sm:text-xl font-semibold text-blue-500/60 text-shadow-blue-200"
       >
-        <p>📍 Thailand, Bangkok</p>
-        <a
-          href="mailto:udomsak.sap@gmail.com"
-          class="hover:text-white transition-colors duration-200"
-        >
-          ✉️ udomsak.sap@gmail.com
-        </a>
+        <div>Software Engineer</div>
+        <div>Full-stack</div>
+        <div>mostly Front-end</div>
+        <div>Game developer!</div>
       </div>
     </div>
+    <p class="text-sm sm:text-base leading-relaxed">
+      I'm a passionate full-stack developer (mostly front-end) focused on
+      building scalable and user-friendly web applications. Proficient in <span
+        class="font-black text-sky-400 drop-shadow-blue">React</span
+      >,
+      <span class="font-black text-green-500 drop-shadow-green">Node.js</span>,
+      and
+      <span class="font-black text-gray-900 drop-shadow-black">Next.js</span>, I
+      strive to write clean, maintainable code that delivers real value. Always
+      seeking to learn and improve, I’m excited by modern tools like
+      <span class="font-black text-fuchsia-400 drop-shadow-magenta">Astro</span>
+      to expand my knowledge and build faster, more efficient websites. Ready to
+      contribute to impactful and innovative projects.
+    </p>
   </div>
-
-  <script>
-    let currentIndex = 0;
-    const hello = [
-      "Hola",
-      "Bonjour",
-      "Salut",
-      "Ciao",
-      "こんにちは",
-      "안녕하세요",
-      "สวัสดี",
-    ];
-
-    function randomIndex() {
-      return ~~(Math.random() * hello.length);
-    }
-
-    function shuffleText(element: HTMLElement, newText: string) {
-      const oldText = element.textContent || "";
-      const maxLength = Math.max(oldText.length, newText.length);
-      let currentText = oldText.split("");
-
-      for (let i = 0; i < maxLength; i++) {
-        setTimeout(() => {
-          if (i < newText.length) {
-            currentText[i] = newText[i];
-          } else {
-            currentText[i] = "";
-          }
-          element.textContent = currentText.join("");
-        }, i * 100);
-      }
-    }
-
-    window.setInterval(function () {
-      let newIndex = randomIndex();
-      while (newIndex === currentIndex) newIndex = randomIndex();
-      currentIndex = newIndex;
-      const helloTextElement = document.getElementById("hello-text");
-      if (helloTextElement) {
-        shuffleText(helloTextElement, hello[currentIndex]);
-      }
-    }, 1500);
-  </script>
-
-  <style>
-    #hello-text {
-      position: relative;
-      display: inline-block;
-      opacity: 1;
-      transition: opacity 0.3s ease-in-out;
-    }
-  </style>
 </div>
+
+<style>
+  .drop-shadow-green {
+    text-shadow: 0 0 39px rgba(43, 255, 0, 0.9);
+  }
+  .drop-shadow-blue {
+    text-shadow: 0 0 39px rgba(0, 0, 255, 0.9);
+  }
+  .drop-shadow-magenta {
+    text-shadow: 0 0 39px rgba(255, 0, 255, 0.9);
+  }
+  .drop-shadow-black {
+    text-shadow: 0 0 39px rgba(0, 0, 0, 0.9);
+  }
+
+  .dropping-texts {
+    display: inline-block;
+    width: 240px;
+    text-align: left;
+    height: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dropping-texts > div {
+    opacity: 0;
+    position: absolute;
+    font-size: inherit;
+    animation-fill-mode: forwards;
+    white-space: nowrap;
+  }
+
+  .dropping-texts > div:nth-child(1) {
+    animation: roll 5s linear infinite 0s;
+  }
+  .dropping-texts > div:nth-child(2) {
+    animation: roll 5s linear infinite 1s;
+  }
+  .dropping-texts > div:nth-child(3) {
+    animation: roll 5s linear infinite 2s;
+  }
+  .dropping-texts > div:nth-child(4) {
+    animation: roll2 5s linear infinite 3s;
+  }
+
+  @keyframes roll {
+    0% {
+      font-size: 0px;
+      opacity: 0;
+      transform: translateX(-30px) rotate(-25deg);
+    }
+    3% {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+    5% {
+      font-size: inherit;
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+    20% {
+      font-size: inherit;
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+    27% {
+      font-size: 0px;
+      opacity: 0.5;
+      transform: translateX(20px) translateY(100px) rotate(0deg);
+    }
+    100% {
+      font-size: 0px;
+      opacity: 0;
+      transform: translateX(-30px) rotate(15deg);
+    }
+  }
+
+  @keyframes roll2 {
+    0% {
+      font-size: 0px;
+      opacity: 0;
+      transform: translateX(-30px) rotate(-25deg);
+    }
+    3% {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+    5% {
+      font-size: inherit;
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+    30% {
+      font-size: inherit;
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+    37% {
+      opacity: 0;
+      transform: scale(10) rotate(20deg);
+    }
+    100% {
+      font-size: 0px;
+      opacity: 0;
+      transform: translateX(-30px) rotate(15deg);
+    }
+  }
+</style>
