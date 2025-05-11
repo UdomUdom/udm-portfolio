@@ -1,10 +1,11 @@
 ---
-import Section from "./Section.astro";
 import { Image } from "astro:assets";
 import Divider from "./Divider.astro";
 ---
 
-<Section>
+<div
+  class="w-full container mx-auto flex flex-col items-center justify-center text-center px-4 min-h-full"
+>
   <div
     class="flex flex-col md:flex-row items-center justify-center mb-10 max-w-fit mx-auto gap-6"
   >
@@ -46,57 +47,57 @@ import Divider from "./Divider.astro";
       </div>
     </div>
   </div>
-</Section>
 
-<script>
-  let currentIndex = 0;
-  const hello = [
-    "Hola",
-    "Bonjour",
-    "Salut",
-    "Ciao",
-    "こんにちは",
-    "안녕하세요",
-    "สวัสดี",
-  ];
+  <script>
+    let currentIndex = 0;
+    const hello = [
+      "Hola",
+      "Bonjour",
+      "Salut",
+      "Ciao",
+      "こんにちは",
+      "안녕하세요",
+      "สวัสดี",
+    ];
 
-  function randomIndex() {
-    return ~~(Math.random() * hello.length);
-  }
-
-  function shuffleText(element: HTMLElement, newText: string) {
-    const oldText = element.textContent || "";
-    const maxLength = Math.max(oldText.length, newText.length);
-    let currentText = oldText.split("");
-
-    for (let i = 0; i < maxLength; i++) {
-      setTimeout(() => {
-        if (i < newText.length) {
-          currentText[i] = newText[i];
-        } else {
-          currentText[i] = "";
-        }
-        element.textContent = currentText.join("");
-      }, i * 100);
+    function randomIndex() {
+      return ~~(Math.random() * hello.length);
     }
-  }
 
-  window.setInterval(function () {
-    let newIndex = randomIndex();
-    while (newIndex === currentIndex) newIndex = randomIndex();
-    currentIndex = newIndex;
-    const helloTextElement = document.getElementById("hello-text");
-    if (helloTextElement) {
-      shuffleText(helloTextElement, hello[currentIndex]);
+    function shuffleText(element: HTMLElement, newText: string) {
+      const oldText = element.textContent || "";
+      const maxLength = Math.max(oldText.length, newText.length);
+      let currentText = oldText.split("");
+
+      for (let i = 0; i < maxLength; i++) {
+        setTimeout(() => {
+          if (i < newText.length) {
+            currentText[i] = newText[i];
+          } else {
+            currentText[i] = "";
+          }
+          element.textContent = currentText.join("");
+        }, i * 100);
+      }
     }
-  }, 1500);
-</script>
 
-<style>
-  #hello-text {
-    position: relative;
-    display: inline-block;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-  }
-</style>
+    window.setInterval(function () {
+      let newIndex = randomIndex();
+      while (newIndex === currentIndex) newIndex = randomIndex();
+      currentIndex = newIndex;
+      const helloTextElement = document.getElementById("hello-text");
+      if (helloTextElement) {
+        shuffleText(helloTextElement, hello[currentIndex]);
+      }
+    }, 1500);
+  </script>
+
+  <style>
+    #hello-text {
+      position: relative;
+      display: inline-block;
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+  </style>
+</div>
