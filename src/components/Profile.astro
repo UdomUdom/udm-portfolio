@@ -1,11 +1,12 @@
 ---
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
+import Divider from "./Divider.astro";
 ---
 
 <Section>
   <div
-    class="flex flex-col md:flex-row md:items-center justify-between mb-10 max-w-fit"
+    class="flex flex-col md:flex-row items-center justify-center mb-10 max-w-fit mx-auto gap-6"
   >
     <div class="mt-6 md:mt-0 flex justify-center">
       <div class="relative group">
@@ -21,40 +22,81 @@ import { Image } from "astro:assets";
     </div>
     <div class="text-center md:text-left mt-6 md:mt-0">
       <p class="text-4xl sm:text-5xl font-extrabold mb-3">
-        Hola, I'm <span class="text-uma">Udomsak S.🛸</span>
+        <span id="hello-text">Hello</span>, I'm <span class="text-uma"
+          >Udomsak S.🛸</span
+        >
       </p>
-      <p class="text-xl text-gray-400 mb-5">Software Engineer</p>
+      <p
+        class="text-2xl sm:text-xl font-semibold text-blue-500/60 text-shadow-blue-200"
+      >
+        Software Engineer
+      </p>
+      <Divider class="hidden md:block" />
+
       <div
         class="flex flex-col gap-3 items-center md:items-start text-gray-400"
       >
-        <p>Thailand, Bangkok</p>
+        <p>📍 Thailand, Bangkok</p>
         <a
           href="mailto:udomsak.sap@gmail.com"
           class="hover:text-white transition-colors duration-200"
         >
-          udomsak.sap@gmail.com
+          ✉️ udomsak.sap@gmail.com
         </a>
       </div>
     </div>
   </div>
-  <!-- <div class="flex flex-col items-center">
-    <h2
-      class="text-4xl font-semibold pb-10 flex gap-x-3 items-center text-center mb-4"
-    >
-      About Me
-    </h2>
-    <Image
-      src="https://avatars.githubusercontent.com/u/118774393?v=4 "
-      alt="Udomsak Sanpasert"
-      class="rounded-md object-cover w-40 h-40 md:w-64 md:h-64 mr-4 md:m-0 md:mr-4"
-      width={248}
-      height={248}
-      loading="eager"
-    />
-  </div>
-  <div class="w-full md:w-auto">
-    <p class="py-2 text-sm sm:text-base">
-      Hola, I'm <span class="text-uma">Udomsak S.🛸</span>
-    </p>
-  </div> -->
 </Section>
+
+<script>
+  let currentIndex = 0;
+  const hello = [
+    "Hola",
+    "Bonjour",
+    "Salut",
+    "Ciao",
+    "こんにちは",
+    "안녕하세요",
+    "สวัสดี",
+  ];
+
+  function randomIndex() {
+    return ~~(Math.random() * hello.length);
+  }
+
+  function shuffleText(element: HTMLElement, newText: string) {
+    const oldText = element.textContent || "";
+    const maxLength = Math.max(oldText.length, newText.length);
+    let currentText = oldText.split("");
+
+    for (let i = 0; i < maxLength; i++) {
+      setTimeout(() => {
+        if (i < newText.length) {
+          currentText[i] = newText[i];
+        } else {
+          currentText[i] = "";
+        }
+        element.textContent = currentText.join("");
+      }, i * 100);
+    }
+  }
+
+  window.setInterval(function () {
+    let newIndex = randomIndex();
+    while (newIndex === currentIndex) newIndex = randomIndex();
+    currentIndex = newIndex;
+    const helloTextElement = document.getElementById("hello-text");
+    if (helloTextElement) {
+      shuffleText(helloTextElement, hello[currentIndex]);
+    }
+  }, 1500);
+</script>
+
+<style>
+  #hello-text {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+</style>
