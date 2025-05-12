@@ -1,14 +1,17 @@
 ---
-import Timeline from "./Timeline.astro";
+import ProjectData from "@/markdown/project.md";
 ---
 
 <div>
   <section
-    id="education"
+    id="projects"
     class="w-full container mx-auto flex items-center justify-center text-center px-4 h-dvh min-h-screen"
   >
     <div class="mt-8 flex flex-col items-center justify-center text-start">
-      <Timeline />
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Projects</h1>
+      <div class="max-w-4xl w-full text-start">
+        <ProjectData />
+      </div>
     </div>
   </section>
 </div>

@@ -1,22 +1,34 @@
 ---
 import { Image } from "astro:assets";
+import Social from "./Social.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <div
   class="w-full container mx-auto flex flex-col items-center justify-center text-center px-4 py-8 h-dvh min-h-screen"
 >
   <div class="text-start max-w-4xl w-full">
-    <Image
-      src="https://avatars.githubusercontent.com/u/118774393?v=4 "
-      alt="Udomsak Sanprasert"
-      class="rounded-md object-cover w-40 h-40 md:w-64 md:h-64 mr-4 mb-4 md:mb-0 float-left"
-      width={248}
-      height={248}
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    />
-
+    <div class="flex flex-col items-center justify-center float-left gap-4">
+      <Image
+        src="https://avatars.githubusercontent.com/u/118774393?v=4 "
+        alt="Udomsak Sanprasert"
+        class="rounded-md object-cover w-40 h-40 md:w-56 md:h-56 mr-4 md:mb-0"
+        width={248}
+        height={248}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <Social
+        href="https://drive.google.com/file/d/1ZD7RNiBZ2suOAjw4Qlc5OLjV6b-r8Ipi/view"
+        label="Download Resume"
+      >
+        <div class="flex items-center justify-center gap-0.5">
+          <Icon name="download" class="text-2xl" />
+          <span class="text-sm">Resume</span>
+        </div>
+      </Social>
+    </div>
     <div>
       <p class="pb-2 text-3xl sm:text-4xl font-bold">
         Hi, I'm <span class="text-uma">Udomsak Sanprasert✨</span>
@@ -35,7 +47,7 @@ import { Image } from "astro:assets";
       building scalable and user-friendly web applications. Proficient in <span
         class="font-black text-sky-400 drop-shadow-blue">React</span
       >,
-      <span class="font-black text-green-500 drop-shadow-green">Node.js</span>,
+      <span class="font-black text-green-500 drop-shadow-green">Node.js</span> ,
       and
       <span class="font-black text-gray-900 drop-shadow-black">Next.js</span>, I
       strive to write clean, maintainable code that delivers real value. Always
@@ -45,112 +57,112 @@ import { Image } from "astro:assets";
       contribute to impactful and innovative projects.
     </p>
   </div>
+
+  <style>
+    .drop-shadow-green {
+      text-shadow: 0 0 39px rgba(43, 255, 0, 0.9);
+    }
+    .drop-shadow-blue {
+      text-shadow: 0 0 39px rgba(0, 0, 255, 0.9);
+    }
+    .drop-shadow-magenta {
+      text-shadow: 0 0 39px rgba(255, 0, 255, 0.9);
+    }
+    .drop-shadow-black {
+      text-shadow: 0 0 39px rgba(0, 0, 0, 0.9);
+    }
+
+    .dropping-texts {
+      display: inline-block;
+      width: 240px;
+      text-align: left;
+      height: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dropping-texts > div {
+      opacity: 0;
+      position: absolute;
+      font-size: inherit;
+      animation-fill-mode: forwards;
+      white-space: nowrap;
+    }
+
+    .dropping-texts > div:nth-child(1) {
+      animation: roll 5s linear infinite 0s;
+    }
+    .dropping-texts > div:nth-child(2) {
+      animation: roll 5s linear infinite 1s;
+    }
+    .dropping-texts > div:nth-child(3) {
+      animation: roll 5s linear infinite 2s;
+    }
+    .dropping-texts > div:nth-child(4) {
+      animation: roll2 5s linear infinite 3s;
+    }
+
+    @keyframes roll {
+      0% {
+        font-size: 0px;
+        opacity: 0;
+        transform: translateX(-30px) rotate(-25deg);
+      }
+      3% {
+        opacity: 1;
+        transform: rotate(0deg);
+      }
+      5% {
+        font-size: inherit;
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+      20% {
+        font-size: inherit;
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+      27% {
+        font-size: 0px;
+        opacity: 0.5;
+        transform: translateX(20px) translateY(100px) rotate(0deg);
+      }
+      100% {
+        font-size: 0px;
+        opacity: 0;
+        transform: translateX(-30px) rotate(15deg);
+      }
+    }
+
+    @keyframes roll2 {
+      0% {
+        font-size: 0px;
+        opacity: 0;
+        transform: translateX(-30px) rotate(-25deg);
+      }
+      3% {
+        opacity: 1;
+        transform: rotate(0deg);
+      }
+      5% {
+        font-size: inherit;
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+      30% {
+        font-size: inherit;
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+      }
+      37% {
+        opacity: 0;
+        transform: scale(10) rotate(20deg);
+      }
+      100% {
+        font-size: 0px;
+        opacity: 0;
+        transform: translateX(-30px) rotate(15deg);
+      }
+    }
+  </style>
 </div>
-
-<style>
-  .drop-shadow-green {
-    text-shadow: 0 0 39px rgba(43, 255, 0, 0.9);
-  }
-  .drop-shadow-blue {
-    text-shadow: 0 0 39px rgba(0, 0, 255, 0.9);
-  }
-  .drop-shadow-magenta {
-    text-shadow: 0 0 39px rgba(255, 0, 255, 0.9);
-  }
-  .drop-shadow-black {
-    text-shadow: 0 0 39px rgba(0, 0, 0, 0.9);
-  }
-
-  .dropping-texts {
-    display: inline-block;
-    width: 240px;
-    text-align: left;
-    height: 36px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .dropping-texts > div {
-    opacity: 0;
-    position: absolute;
-    font-size: inherit;
-    animation-fill-mode: forwards;
-    white-space: nowrap;
-  }
-
-  .dropping-texts > div:nth-child(1) {
-    animation: roll 5s linear infinite 0s;
-  }
-  .dropping-texts > div:nth-child(2) {
-    animation: roll 5s linear infinite 1s;
-  }
-  .dropping-texts > div:nth-child(3) {
-    animation: roll 5s linear infinite 2s;
-  }
-  .dropping-texts > div:nth-child(4) {
-    animation: roll2 5s linear infinite 3s;
-  }
-
-  @keyframes roll {
-    0% {
-      font-size: 0px;
-      opacity: 0;
-      transform: translateX(-30px) rotate(-25deg);
-    }
-    3% {
-      opacity: 1;
-      transform: rotate(0deg);
-    }
-    5% {
-      font-size: inherit;
-      opacity: 1;
-      transform: translateX(0) rotate(0deg);
-    }
-    20% {
-      font-size: inherit;
-      opacity: 1;
-      transform: translateX(0) rotate(0deg);
-    }
-    27% {
-      font-size: 0px;
-      opacity: 0.5;
-      transform: translateX(20px) translateY(100px) rotate(0deg);
-    }
-    100% {
-      font-size: 0px;
-      opacity: 0;
-      transform: translateX(-30px) rotate(15deg);
-    }
-  }
-
-  @keyframes roll2 {
-    0% {
-      font-size: 0px;
-      opacity: 0;
-      transform: translateX(-30px) rotate(-25deg);
-    }
-    3% {
-      opacity: 1;
-      transform: rotate(0deg);
-    }
-    5% {
-      font-size: inherit;
-      opacity: 1;
-      transform: translateX(0) rotate(0deg);
-    }
-    30% {
-      font-size: inherit;
-      opacity: 1;
-      transform: translateX(0) rotate(0deg);
-    }
-    37% {
-      opacity: 0;
-      transform: scale(10) rotate(20deg);
-    }
-    100% {
-      font-size: 0px;
-      opacity: 0;
-      transform: translateX(-30px) rotate(15deg);
-    }
-  }
-</style>
