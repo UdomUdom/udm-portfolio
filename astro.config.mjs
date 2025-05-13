@@ -10,6 +10,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-
+  site: 'https://udomudom.github.io',
   integrations: [icon(), mdx()]
 });
