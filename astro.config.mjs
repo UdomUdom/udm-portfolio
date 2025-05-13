@@ -4,7 +4,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 import icon from 'astro-icon';
 import mdx from '@astrojs/mdx';
-import node from '@astrojs/node';
 const SERVER_PORT = 4321;
 // the url to access your blog during local development
 const LOCALHOST_URL = `http://localhost:${SERVER_PORT}`;
@@ -20,6 +19,7 @@ if (isBuild) {
 }
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
   vite: {
     plugins: [tailwindcss()]
   },
@@ -27,8 +27,4 @@ export default defineConfig({
   server: { port: SERVER_PORT },
   site: BASE_URL,
   integrations: [icon(), mdx()],
-
-  adapter: node({
-    mode: 'standalone'
-  })
 });
