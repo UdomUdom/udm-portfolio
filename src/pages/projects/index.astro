@@ -1,8 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Project from "@/components/Project.astro";
+import Container from "@/components/Container.astro";
+import Content from "@/data/projects.md";
 ---
 
 <Layout title="My Projects" description="Projects - Games, Web Apps and Things">
-  <Project />
+  <Container>
+    <div
+      class="mt-8 flex flex-col items-center justify-center text-start pt-20"
+    >
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Projects</h1>
+      <div class="max-w-4xl w-full text-start"><Content /></div>
+    </div>
+  </Container>
 </Layout>

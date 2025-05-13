@@ -1,0 +1,50 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import "@fontsource-variable/fira-code";
+import "@/styles/post.css";
+
+interface Frontmatter {
+  title?: string;
+  author?: string;
+  date?: string;
+}
+
+type Props = MarkdownLayoutProps<Frontmatter>;
+
+const { frontmatter } = Astro.props;
+
+const formattedDate = frontmatter.date
+  ? new Date(frontmatter.date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+  : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <header>
+      {frontmatter.author && <p>By {frontmatter.author}</p>}
+    </header>
+
+    <main class="post-content markdown">
+      <slot />
+    </main>
+
+    <footer>
+      {
+        formattedDate && (
+          <p>
+            Post on <time datetime={frontmatter.date}>{formattedDate}</time>
+          </p>
+        )
+      }
+    </footer>
+  </body>
+</html>
